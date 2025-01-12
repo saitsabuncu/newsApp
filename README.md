@@ -134,13 +134,3 @@ Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` d
 
 Herhangi bir soru veya öneriniz için lütfen [email@example.com](mailto:email@example.com) adresinden iletişime geçin.
 ```
-
----
-
-### **README.md Özellikleri**
-1. **Kurulum ve Kullanım Talimatları**:
-   - Hem `.env` hem de GitHub Secrets kullanımını kapsar.
-2. **GitHub Actions Desteği**:
-   - API anahtarının güvenli şekilde kullanılmasına yönelik örnek iş akışı içerir.
-3. **Kullanıcı Dostu**:
-   - Projeyi indirip çalıştırmak isteyenler için açık ve detaylı rehber sağlar.
