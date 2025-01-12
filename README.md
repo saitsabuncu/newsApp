@@ -132,5 +132,5 @@ Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` d
 
 ## ✨ İletişim
 
-Herhangi bir soru veya öneriniz için lütfen [email@example.com](mailto:email@example.com) adresinden iletişime geçin.
+Herhangi bir soru veya öneriniz için lütfen [sait.sabuncu@hotmail.com](mailto:sait.sabuncu@hotmail.com]) adresinden iletişime geçin.
 ```
