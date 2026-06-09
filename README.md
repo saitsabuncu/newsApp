@@ -1,136 +1,92 @@
-# NewsAPI Haber Uygulaması
+# NewsApp
 
-Bu proje, **NewsAPI** kullanarak belirli konular hakkında haberleri sorgulamak, listelemek ve kullanıcıya sunmak için geliştirilmiştir. Ayrıca, **.env** dosyası ve **GitHub Secrets** kullanılarak API anahtarlarının güvenliğini sağlamaktadır.
+NewsAPI kullanılarak geliştirilmiş bir Python uygulamasıdır. Kullanıcıların belirli konular hakkında güncel haberleri aramasına, filtrelemesine ve listelemesine olanak sağlar.
 
----
+## Project Overview
 
-## 🚀 Özellikler
+Bu proje, Python öğrenme sürecimde REST API kullanımı, JSON verilerinin işlenmesi ve çevresel değişkenlerle güvenli yapılandırma konularını uygulamalı olarak öğrenmek amacıyla geliştirilmiştir.
 
-- **Haber Arama**: Kullanıcıdan alınan sorgu parametrelerine göre haber arama.
-- **Dil Seçeneği**: Haberleri belirli bir dilde sorgulama (örneğin: Türkçe, İngilizce).
-- **Sıralama Seçeneği**: Haberleri `publishedAt`, `popularity` veya `relevance` gibi ölçütlere göre sıralama.
-- **Güvenli API Anahtarı Kullanımı**:
-  - API anahtarlarını `.env` dosyasında veya **GitHub Secrets** ile saklama.
+Kullanıcı tarafından girilen konu, dil ve sıralama kriterlerine göre NewsAPI üzerinden haberler çekilir ve terminal ekranında listelenir.
 
----
+## Features
 
-## 📂 Proje Yapısı
+* Haber arama
+* Dil seçimi (Türkçe, İngilizce vb.)
+* Sıralama seçenekleri
 
-```plaintext
-project/
-├── main.py               # Ana Python dosyası
-├── news_api.env          # API anahtarını içeren .env dosyası
-├── README.md             # Proje açıklamaları
-```
+  * relevance
+  * popularity
+  * publishedAt
+* JSON veri işleme
+* Çevresel değişken (.env) desteği
+* API tabanlı veri çekme
 
----
+## Technologies Used
 
-## 🔧 Kurulum
+* Python 3
+* Requests
+* Python Dotenv
+* NewsAPI
 
-### 1. Gerekli Kütüphaneleri Yükleyin
-Proje için aşağıdaki kütüphanelerin kurulu olması gerekir:
+## Installation
+
+Install dependencies:
+
 ```bash
-pip install python-dotenv requests
+pip install requests python-dotenv
 ```
 
-### 2. `.env` Dosyasını Ayarlayın
-Proje dizininde bir `.env` dosyası oluşturun ve API anahtarınızı buraya ekleyin:
-```
+Create a `.env` file:
+
+```env
 NEWS_API_KEY=your_api_key_here
 ```
 
-> **Not:** Eğer GitHub Secrets kullanıyorsanız `.env` dosyasına gerek kalmaz. Ancak `load_dotenv` ile çevresel değişkenleri yüklediğinizden emin olun.
+Run the application:
 
-### 3. Projeyi Çalıştırın
-Proje dizininde aşağıdaki komutla uygulamayı başlatabilirsiniz:
 ```bash
 python main.py
 ```
 
----
+## Example Usage
 
-## 🔑 GitHub Secrets Kullanımı
-
-GitHub Actions ile API anahtarını güvenli bir şekilde saklamak için şu adımları izleyin:
-
-1. **Secrets Ekleme**:
-   - GitHub reposunda `Settings > Secrets and variables > Actions > New repository secret` seçeneğine gidin.
-   - Yeni bir secret ekleyin:
-     - Name: `NEWS_API_KEY`
-     - Value: `your_api_key_here`
-
-2. **GitHub Actions Dosyası Örneği**:
-   ```yaml
-   name: NewsAPI Workflow
-   on:
-     push:
-       branches:
-         - main
-
-   jobs:
-     run-newsapi:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Check out the code
-           uses: actions/checkout@v3
-         - name: Run Python Script
-           env:
-             NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
-           run: python main.py
-   ```
-
----
-
-## 📝 Kullanım
-
-### Programı Çalıştırma
-1. Program başladığında sizden şu bilgileri isteyecektir:
-   - **Haber Konusu**: Örneğin, "futbol", "teknoloji".
-   - **Dil**: Haberlerin dili. Örneğin, "tr" (Türkçe) veya "en" (İngilizce).
-   - **Sıralama Kriteri**: `relevance`, `popularity`, veya `publishedAt`.
-
-2. **Örnek Girdi**:
-   ```
-   Aramak istediğiniz haber konusu: teknoloji
-   Hangi dilde arama yapmak istiyorsunuz? (örneğin: tr, en): tr
-   Haberleri nasıl sıralamak istersiniz? (örneğin: relevance, popularity, publishedAt): publishedAt
-   ```
-
-3. **Örnek Çıktı**:
-   ```
-   1. Haber
-   Kaynak: TechCrunch
-   Başlık: Yeni yapay zeka modelleri piyasaya sürüldü
-   URL: https://techcrunch.com/ai-news
-   ```
-
----
-
-## 🌟 Geliştirme Önerileri
-
-- **Haberleri JSON veya CSV Dosyasına Kaydetme**: Çekilen haberleri bir dosyaya saklayarak daha sonra kullanılabilir hale getirin.
-- **Hata Yönetimi**: Kullanıcıya API yanıtına bağlı olarak daha anlamlı hata mesajları sunun.
-- **Görselleştirme**: Haberleri masaüstü veya web arayüzü ile sunun (örneğin, Tkinter veya Flask kullanarak).
-
----
-
-## 📌 Notlar
-
-- API anahtarınızı GitHub'a yüklememeye dikkat edin.
-- `.env` dosyanızı `.gitignore` ile koruyun:
-  ```
-  .env
-  ```
-
----
-
-## 🛠️ Lisans
-
-Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasını inceleyin.
-
----
-
-## ✨ İletişim
-
-Herhangi bir soru veya öneriniz için lütfen [sait.sabuncu@hotmail.com](mailto:sait.sabuncu@hotmail.com]) adresinden iletişime geçin.
+```text
+Search topic: technology
+Language: en
+Sort by: publishedAt
 ```
+
+Example output:
+
+```text
+Source: TechCrunch
+Title: New AI models released
+URL: https://example.com/news
+```
+
+## What I Learned
+
+Through this project I practiced:
+
+* Working with REST APIs
+* Processing JSON responses
+* Using environment variables
+* Error handling
+* User input validation
+* Data filtering and presentation
+
+## Future Improvements
+
+* Graphical user interface (Tkinter)
+* Export results to JSON or CSV
+* Save search history
+* Category filtering
+* News dashboard
+
+## Developer
+
+Mustafa Sait Sabuncu
+
+## License
+
+MIT License
